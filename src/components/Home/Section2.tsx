@@ -2,12 +2,6 @@ import './Section2.scss';
 import Card from '../Card/Card';
 import React from 'react';
 
-interface Product {
-    id: number;
-    imgUrl: string;
-    name: string;
-    price: number;
-}
 
 interface HomeProps {
     products: Product[];

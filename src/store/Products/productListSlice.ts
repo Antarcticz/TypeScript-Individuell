@@ -1,12 +1,6 @@
 import { createAsyncThunk, createSlice, SerializedError } from "@reduxjs/toolkit";
 import productsService from "./productService";
 
-interface Product {
-    id: number;
-    imgUrl: string;
-    name: string;
-    price: number;
-}
 
 interface ProductListState {
     products: Product[];

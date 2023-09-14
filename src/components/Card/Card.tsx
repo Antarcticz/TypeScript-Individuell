@@ -3,12 +3,6 @@ import './Card.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface Product {
-    id: number;
-    imgUrl: string;
-    name: string;
-    price: number;
-}
 
 interface CardProps {
     product: Product;

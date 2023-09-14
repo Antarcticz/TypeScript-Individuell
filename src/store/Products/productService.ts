@@ -1,12 +1,6 @@
 import { db } from "../../firebase/config";
 import { doc, addDoc, collection, getDocs } from 'firebase/firestore';
 
-interface Product {
-    id: number;
-    imgUrl: string;
-    name: string;
-    price: number;
-}
 
 const createProduct = async (productData: Product): Promise<Product> => {
     const collectionRef = collection(db, 'products');

@@ -7,12 +7,6 @@ import { RootState } from '../store/index';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 
-interface Product {
-    id: number;
-    imgUrl: string;
-    name: string;
-    price: number;
-}
 
 const Home: React.FC = () => {
     const dispatch: ThunkDispatch<RootState, void, AnyAction> = useDispatch();

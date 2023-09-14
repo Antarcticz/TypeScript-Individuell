@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../store/index';
 
 interface ShoppingCartProps {
-    checkout?: boolean; // Make checkout prop optional by adding '?'
+    checkout?: boolean;
 }
 
 const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({ checkout }) => {
