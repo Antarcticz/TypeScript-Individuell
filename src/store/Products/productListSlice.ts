@@ -21,24 +21,22 @@ const initialState: ProductListState = {
 }
 
 export const addProduct = createAsyncThunk<Product, Product, { rejectValue: SerializedError }>('product-list/add', async (productData, thunkAPI) => {
-        try {
-            const response = await productsService.createProduct(productData);
-            return response;
-        } catch (err: any) {
-            return thunkAPI.rejectWithValue(err.message);
-        }
+    try {
+        const response = await productsService.createProduct(productData);
+        return response;
+    } catch (err: any) {
+        return thunkAPI.rejectWithValue(err.message);
     }
-);
+});
 
 export const getProducts = createAsyncThunk<Product[], void, { rejectValue: SerializedError }>('product-list/getAll', async (_, thunkAPI) => {
-        try {
-            const response = await productsService.getAllAsync('products');
-            return response as Product[];
-        } catch (err: any) {
-            return thunkAPI.rejectWithValue(err.message);
-        }
+    try {
+        const response = await productsService.getAllAsync('products');
+        return response as Product[];
+    } catch (err: any) {
+        return thunkAPI.rejectWithValue(err.message);
     }
-);
+});
 
 export const productListSlice = createSlice({
     name: 'Product-list',

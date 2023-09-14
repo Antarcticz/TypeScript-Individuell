@@ -1,9 +1,11 @@
 import '../scssPages/home.scss';
 import React, { useEffect } from 'react';
+import Section2 from '../components/Home/Section2';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../store/Products/productListSlice';
 import { RootState } from '../store/index';
-import Section2 from '../components/Home/Section2';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
 
 interface Product {
     id: number;
@@ -13,8 +15,8 @@ interface Product {
 }
 
 const Home: React.FC = () => {
-    const dispatch = useDispatch();
-    const products: Product[] = useSelector((state: RootState) => state.products.products);
+    const dispatch: ThunkDispatch<RootState, void, AnyAction> = useDispatch();
+    const products: Product[] = useSelector((state: RootState) => state.productList.products);
 
     useEffect(() => {
         dispatch(getProducts());
