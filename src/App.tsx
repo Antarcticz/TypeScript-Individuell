@@ -2,10 +2,8 @@ import './App.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home'
-// import ProductDetails from './pages/ProductDetails'
-// import Add from './pages/Add'
+import ProductDetails from './pages/ProductDetails'
 import Footer from './components/Footer/Footer'
-// import Checkout from './pages/Checkout'
 
 
 const App = () => {
@@ -15,9 +13,7 @@ const App = () => {
       <div className="container-app">
         <Routes>
           <Route index element={<Home />} />
-          {/* <Route path='add' element={<Add />} />
           <Route path='product-details/:id' element={<ProductDetails />} />
-          <Route path='checkout' element={<Checkout />} /> */}
         </Routes>
       </div>
       <Footer />

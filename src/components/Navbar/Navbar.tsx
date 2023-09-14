@@ -1,10 +1,10 @@
 import React from 'react';
 import './Navbar.scss';
 import { Link, NavLink } from 'react-router-dom';
-import ShoppingCartComponent from '../ShoppingCart/ShoppingCart'; // Renamed import
+import ShoppingCartComponent from '../ShoppingCart/ShoppingCart';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store/index'; // Make sure to replace with your actual store structure
+import { RootState } from '../../store/index';
 
 const Navbar: React.FC = () => {
     const { totalQuantity } = useSelector((state: RootState) => state.shoppingCart);
@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
     return (
         <nav className="navbar d-flex justify-content-center align-item-center p-5">
             <div className="container-navbar">
-                <Link className="navbar-brand" to="/"><img src="/Placeholders/Logo.svg" alt="" /></Link>
+                <Link className="navbar-brand" to="/">WEBSHOP</Link>
                 <ul className="nav-links gap-5">
                     <li><NavLink to="/">HOME</NavLink></li>
                     <li className="nav-item dropdown">
