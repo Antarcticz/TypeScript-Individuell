@@ -1,4 +1,4 @@
-import '../scssPages/home.scss';
+import '../scssPages/Home.scss';
 import React, { useEffect } from 'react';
 import Section2 from '../components/Home/Section2';
 import { useDispatch, useSelector } from 'react-redux';

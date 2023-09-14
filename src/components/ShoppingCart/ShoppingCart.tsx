@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import { RootState } from '../../store/index';
 
 interface ShoppingCartProps {
-    checkout: boolean;
+    checkout?: boolean; // Make checkout prop optional by adding '?'
 }
 
-const ShoppingCart: React.FC<ShoppingCartProps> = ({ checkout }) => {
+const ShoppingCartComponent: React.FC<ShoppingCartProps> = ({ checkout }) => {
     const { cart, totalAmount } = useSelector((state: RootState) => state.shoppingCart);
     const dispatch = useDispatch();
 
@@ -42,4 +42,4 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({ checkout }) => {
     );
 };
 
-export default ShoppingCart;
+export default ShoppingCartComponent;

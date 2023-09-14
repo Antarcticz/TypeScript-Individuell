@@ -1,0 +1,40 @@
+.home-section-2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    padding: 4rem 0 1rem 0;
+    background-color: #fff;
+
+    h2 {
+        font-size: 3rem;
+    }
+    .shop-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        padding: 2rem 0 0 0;
+        color: #616161;
+
+        li {
+            cursor: pointer;
+        }
+        li,
+        p {
+            padding: 0 .35em 0 .35em;
+        }
+    }
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 65%;
+        padding: 1rem;
+        background-color: #fff;
+    }
+}

@@ -1,0 +1,23 @@
+.home-product-card {
+    cursor: pointer;
+    border: 1px solid #aeaeae60;
+    margin-top: 2rem;
+
+    img {
+        width: 270px;
+        height: 295px;
+    }
+    p {
+        color: #363636;
+    }
+    p,
+    span {
+        padding: 1rem 0 0 0;
+        font-size: 1.2rem;
+        
+    }
+    span {
+        color: #616161;
+        // padding-right: 1rem;
+    }
+}
