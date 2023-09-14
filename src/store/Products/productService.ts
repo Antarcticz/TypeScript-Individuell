@@ -1,5 +1,5 @@
 import { db } from "../../firebase/config";
-import { doc, addDoc, collection, getDocs } from 'firebase/firestore';
+import { doc, addDoc, collection, getDocs, getDoc } from 'firebase/firestore';
 
 
 const createProduct = async (productData: Product): Promise<Product> => {
@@ -26,9 +26,34 @@ const getAllAsync = async (col: string): Promise<Product[]> => {
     return products;
 };
 
+/* Get Product By ID */
+const getProductById = async (productId: string) => {
+    try {
+        const productDocRef = doc(db, 'products', productId);
+        const productDocSnapshot = await getDoc(productDocRef);
+
+        if (productDocSnapshot.exists()) {
+            // Extract the document data
+            const productData = productDocSnapshot.data();
+            // Combine the ID and data into a single object
+            const productWithId = {
+                id: productId,
+                ...productData,
+            };
+            return productWithId;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error('Error fetching product by ID:', error);
+        return null;
+    }
+};
+
 const productsService = {
     createProduct,
-    getAllAsync
+    getAllAsync,
+    getProductById
 };
 
 export default productsService;

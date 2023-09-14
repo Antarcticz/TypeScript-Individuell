@@ -1,6 +1,7 @@
 import { doc, getDoc, DocumentData } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from '../firebase/config';
+import { log } from 'console';
 
 interface UseDocResult {
   data: DocumentData | null;
@@ -31,6 +32,8 @@ const useDoc = (collection: string, id: string): UseDocResult => {
     getDocAsync();
   }, [collection, id]);
 
+  console.log(id);
+  
   return { data, error, loading };
 };
 

@@ -8,6 +8,8 @@ interface HomeProps {
 }
 
 const Section2: React.FC<HomeProps> = ({ products }) => {
+    console.log(products);
+    
     return (
         <div className="home-section-2">
             <h2>Products</h2>

@@ -9,6 +9,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ product }) => {
+    console.log(product);
     return (
         <Link to={`/product-details/${product.id}`} style={{ textDecoration: 'none' }}>
             <div className="home-product-card">
