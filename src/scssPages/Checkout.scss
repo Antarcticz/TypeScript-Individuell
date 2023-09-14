@@ -1,0 +1,36 @@
+.container-checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    border: 1px solid;
+    border-color: #aeaeae60 transparent transparent transparent;
+
+    p {
+        position: relative;
+        left: 2.9rem;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    
+    small {
+        font-weight: 600;
+        position: relative;
+        left: 2.9rem;
+    }
+
+    img {
+        margin-right: 1rem;
+        width: 350px;
+        height: 350px;
+        border: 1px solid #aeaeae60;
+    }
+    .buttons {
+        margin-left: 5rem;
+
+        .btn-danger {
+            margin-right: 5rem;
+        }
+    }
+}
