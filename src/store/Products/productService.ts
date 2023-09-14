@@ -11,7 +11,7 @@ const createProduct = async (productData: Product): Promise<Product> => {
     }
 
     console.log(docRef);
-    return { ...productData, id: Number(docRef.id) };
+    return { ...productData, id: String(docRef.id) };
 };
 
 const getAllAsync = async (col: string): Promise<Product[]> => {
@@ -20,7 +20,7 @@ const getAllAsync = async (col: string): Promise<Product[]> => {
 
     const products: Product[] = [];
     querySnapshot.forEach((doc) => {
-        products.push({ ...doc.data(), id: Number(doc.id) } as Product);
+        products.push({ ...doc.data(), id: String(doc.id) } as Product);
     });
 
     return products;
