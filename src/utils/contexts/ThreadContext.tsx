@@ -59,9 +59,31 @@ const CartProvider = ({children}: PropsWithChildren) => {
 }
 
 const useCarts = () => {
-    const carts = useContext(CartContext)
+    const { carts, actions } = useContext(CartContext);
 
-    return carts
+    // Function to retrieve carts from localStorage
+    const getCartsFromLocalStorage = () => {
+        return getCartsFromLocalStorage();
+    }
+
+    // Function to update the carts in context and localStorage
+    const updateCarts = (newCarts) => {
+        setCarts(newCarts);
+        saveCartsToLocalStorage(newCarts);
+    }
+
+    return {
+        carts,
+        actions: {
+            ...actions,
+            createCart: (cart) => {
+                actions.createCart(cart);
+                updateCarts([...carts, cart]);
+            },
+            // You can add other actions as needed
+        },
+        getCartsFromLocalStorage, // Expose the function to retrieve carts from localStorage
+    };
 }
 
 export {

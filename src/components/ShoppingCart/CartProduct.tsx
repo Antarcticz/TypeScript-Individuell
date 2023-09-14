@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeOne, removeAll } from '../../store/ShoppingCart/shoppingCartSlice';
 import { FaTrash } from 'react-icons/fa';
+import { useCarts } from '../../utils/contexts/ThreadContext';
 
 interface CartProductProps {
     item: {
@@ -18,6 +19,11 @@ interface CartProductProps {
 }
 
 const CartProduct: React.FC<CartProductProps> = ({ item }) => {
+    const { carts, actions, getCartsFromLocalStorage } = useCarts();
+
+    // Retrieve carts from localStorage
+    const storedCarts = getCartsFromLocalStorage();
+
     const dispatch = useDispatch();
 
     const add = () => {
