@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.js'
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import store from './store/index'
-import { CartProvider } from './utils/contexts/ThreadContext'
+import { CartProvider } from './utils/contexts/CartContext'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
