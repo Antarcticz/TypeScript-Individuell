@@ -63,9 +63,6 @@ const ProductDetails: React.FC = () => {
                         <p>${product.price}</p>
                     </div>
                     <div className="addToCart">
-                        <button className='btn-minus'>-</button>
-                        <div className='count'><p>1</p></div>
-                        <button className='btn-plus'>+</button>
                         <button className='general-btn btn-cart' onClick={handleAddToCart}>
                             Add to Cart <FaCartPlus />
                         </button>
