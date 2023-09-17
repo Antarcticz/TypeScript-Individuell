@@ -1,0 +1,14 @@
+.register-container {
+    background-color: #c0c0c0bc;
+    backdrop-filter: blur(10px);
+    border-radius: 0.3rem;
+    margin: auto;
+    margin-top: 4%;
+    height: 30rem;
+    width: 35rem;
+    padding: 1rem;
+
+    #register-formGroup {
+        margin-bottom: 1rem;
+    }
+}
