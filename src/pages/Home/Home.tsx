@@ -1,0 +1,61 @@
+import './Home.scss';
+import productsService from '../../utils/productService';
+import HomeProduct from '../../components/HomeProduct/HomeProduct';
+import CreateProductModal from '../../components/CreateProductModal/ProductModal';
+import React, { useEffect, useState } from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
+
+const Home = () => {
+    const [productList, setProductList] = useState<Product[]>([]);
+    const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        async function fetchProducts() {
+            try {
+                const productsData = await productsService.getProducts();
+                setProductList(productsData as Product[]);
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchProducts();
+    }, []);
+
+    const handleShowModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    return (
+        <div className='products-container'>
+            <h1>Products</h1>
+            <div className='top-product-section'>
+                <Button onClick={handleShowModal}>Create Product</Button>
+            </div>
+
+            <CreateProductModal show={showModal} onHide={handleCloseModal} />
+
+            <Container>
+                <Row>
+                    {productList.map((product) => {
+                        const Product = product;
+                        console.log("Product:", Product);
+                        return (
+                            <Col md={3} xs={1} lg={4} className='g-3'>
+                                <HomeProduct {...product} />
+                            </Col>
+                        );
+                    })}
+                </Row>
+            </Container>
+
+        </div>
+    );
+
+};
+
+export default Home;

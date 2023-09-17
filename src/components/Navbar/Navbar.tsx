@@ -1,38 +1,95 @@
-import React from 'react';
 import './Navbar.scss';
-import { Link, NavLink } from 'react-router-dom';
-import ShoppingCartComponent from '../ShoppingCart/ShoppingCart';
+import React, { useEffect, useState } from 'react';
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { auth } from '../../firebase/config';
+import { useUserAuth } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
 import { FaShoppingCart } from 'react-icons/fa';
-import { useSelector } from 'react-redux'; // Import useSelector from react-redux for accessing state
-import { RootState } from '../../store/index';
+import { NavLink } from 'react-router-dom';
 
-// Functional component Navbar for rendering the website's navigation bar
-const Navbar: React.FC = () => {
-    // Access the totalQuantity from the shoppingCart state using useSelector
-    const { totalQuantity } = useSelector((state: RootState) => state.shoppingCart);
 
-    // Return the navigation bar with links and shopping cart icon
+const UserNavbar: React.FC = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isUserInfoVisible, setIsUserInfoVisible] = useState(false);
+    const { user } = useUserAuth();
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
+                setIsLoggedIn(true);
+            } else {
+                setIsLoggedIn(false);
+            }
+        });
+        return () => unsubscribe();
+    }, []);
+
+    const handleLogout = async () => {
+        try {
+            await auth.signOut();
+            setIsLoggedIn(false);
+            console.log('User logged out successfully');
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
+
+    const { cartQuantity, openCart } = useCart()
+
+    const toggleUserInfo = () => {
+        setIsUserInfoVisible(!isUserInfoVisible);
+    };
+
     return (
-        <nav className="navbar d-flex justify-content-center align-item-center p-5">
-            <div className="container-navbar">
-                <Link className="navbar-brand" to="/">WEBSHOP</Link>
-                <ul className="nav-links gap-5">
-                    <li><NavLink to="/">HOME</NavLink></li>
-                    <li className="nav-item dropdown">
-                        <span className="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <FaShoppingCart />
-                            {totalQuantity > 0 && ( // Display a badge if the totalQuantity is greater than 0
-                                <span className='position-absolute start-100 translate-middle badge rounded-pill bg-danger'>{totalQuantity}</span>
+        <Navbar className="navbar p-3" variant="dark" expand="lg">
+            <Container>
+                <Navbar.Brand href="/">Webshop</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ml-auto">
+                        <Nav.Link to="/" as={NavLink}>Home</Nav.Link>
+                    </Nav>
+
+                    {isLoggedIn ? (
+                        <div className='user-info' onClick={toggleUserInfo}>
+                            {user && user.displayName ? (
+                                <div className="displayName">
+                                    {user.photoURL && (
+                                        <div>
+                                            <img className="userImg" src={user.photoURL} alt="User Profile" />
+                                        </div>
+                                    )}
+                                    {user.displayName}
+                                </div>
+                            ) : null}
+                            {isUserInfoVisible && (
+                                <div className="user-info-details">
+                                    <h3 className="title is-3">User Information</h3>
+                                    <p><strong>Name:</strong> {user?.displayName}</p>
+                                    <p><strong>Email:</strong> {user?.email}</p>
+                                    <Button className="btn btn-danger mr-1" onClick={handleLogout}>
+                                        Logout
+                                    </Button>
+                                </div>
                             )}
-                        </span>
-                        <ul className="dropdown-menu dropdown-menu-end shopping-cart">
-                            <ShoppingCartComponent />
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                        </div>
+                    ) : (
+                        <Button variant="primary" className="login-Btn" href="/signIn">
+                            Login
+                        </Button>
+                    )}
+
+                    <Button onClick={openCart} className="cart-button"
+                        variant="success">
+                        <FaShoppingCart />
+                        <div className='cart-counter'>
+                            {cartQuantity}
+                        </div>
+                    </Button>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };
 
-export default Navbar;
+export default UserNavbar;

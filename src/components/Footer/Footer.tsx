@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
 import './Footer.scss'
 
-const Footer = () => {
-  return (
-    <div className="Footer d-flex justify-content-center align-item-center p-5">
-        <p className="copyright">&copy; 2024 Webshop. All rights reserved.</p>
-    </div>
-  )
-}
+const Footer: React.FC = () => {
+    return (
+        <footer className="footer text-white text-center py-3">
+            <div className="footer-container">
+            <p className="copyright">&copy; 2024 Webshop. All rights reserved.</p>
+            </div>
+        </footer>
+    );
+};
 
-export default Footer
+export default Footer;

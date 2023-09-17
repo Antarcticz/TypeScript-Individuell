@@ -1,26 +1,32 @@
-import './App.scss'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar'
-import Home from './pages/Home'
-import ProductDetails from './pages/ProductDetails'
-import Checkout from './pages/Checkout'
-import Footer from './components/Footer/Footer'
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/Home/Home';
+import RegisterPage from './components/Register/Register';
+import LoginPage from './components/Login/Login';
+import DetailPage from './pages/Details/Details';
+import Cart from './components/Cart/Cart';
+import Footer from './components/Footer/Footer';
+import { Route, Routes } from 'react-router-dom';
+import { AuthContextProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 
 
-const App = () => {
+export default function App() {
+
   return (
-    <BrowserRouter>
-      <Navbar />
-      <div className="container-app">
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='product-details/:id' element={<ProductDetails />} />
-          <Route path='checkout' element={<Checkout />} />
-        </Routes>
-      </div>
-      <Footer />
-    </BrowserRouter>
-  )
+    <div className='app-container'>
+      <AuthContextProvider>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/signIn" element={<LoginPage />} />
+            <Route path="/details/:productId" element={<DetailPage />} />
+          </Routes>
+          <Cart />
+          <Footer />
+        </CartProvider>
+      </AuthContextProvider>
+    </div>
+  );
 }
-
-export default App
