@@ -4,6 +4,7 @@ import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAn
 import { auth } from '../firebase/config';
 import { db } from "../firebase/config";
 
+
 // Register User
 const registerUser = async (email: string, password: string): Promise<UserCredential> => {
     try {

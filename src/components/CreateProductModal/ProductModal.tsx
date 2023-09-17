@@ -2,6 +2,7 @@ import productsService from '../../utils/productService';
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
+
 interface Product {
     creationDate: string | number | Date;
     productName: string;

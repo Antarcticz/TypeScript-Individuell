@@ -2,6 +2,7 @@ import { useContext, createContext, useEffect, useState, ReactNode } from 'react
 import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../firebase/config';
 
+
 //Defining the props
 export interface AuthContextProps {
     googleSignIn: () => void;

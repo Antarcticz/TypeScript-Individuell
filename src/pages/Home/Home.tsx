@@ -5,6 +5,7 @@ import CreateProductModal from '../../components/CreateProductModal/ProductModal
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 
+
 const Home = () => {
     const [productList, setProductList] = useState<Product[]>([]);
     const [showModal, setShowModal] = useState(false);

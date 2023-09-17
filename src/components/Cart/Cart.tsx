@@ -4,7 +4,6 @@ import { useCart } from '../../context/CartContext';
 import { Button, ListGroup, Offcanvas } from 'react-bootstrap';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
-
 interface ProductDetailsProps {
     creationDate: string | number | Date;
     productName: string;

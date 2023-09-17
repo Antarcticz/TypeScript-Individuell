@@ -36,7 +36,7 @@ const RegistrationForm: React.FC = () => {
 
     const handleRegistration = async (): Promise<void> => {
         try {
-            const userCredential = await createUserWithEmailAndPassword( auth, formData.email, formData.password );
+            const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
 
             const user = userCredential.user;
             if (user) {

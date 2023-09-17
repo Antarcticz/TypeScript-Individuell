@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+
 // Define a custom React Hook called useLocalStorage
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
     // Initialize the state using useState hook

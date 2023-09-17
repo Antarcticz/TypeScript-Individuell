@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useCart } from '../../context/CartContext';
 
+
 interface ProductDetailsProps {
     creationDate: string | number | Date;
     productName: string;

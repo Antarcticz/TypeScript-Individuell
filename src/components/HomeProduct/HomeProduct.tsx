@@ -4,7 +4,6 @@ import productsService from '../../utils/productService'
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
-
 export type HomeProductProps = {
     id?: any;
     productName: string;

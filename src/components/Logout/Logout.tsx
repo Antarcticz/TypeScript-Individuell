@@ -2,6 +2,7 @@ import React from 'react';
 import { auth } from '../../firebase/config';
 import { Button } from 'react-bootstrap';
 
+
 const LogoutButton: React.FC = () => {
     const handleLogout = async () => {
         try {

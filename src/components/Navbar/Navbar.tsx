@@ -7,7 +7,6 @@ import { useCart } from '../../context/CartContext';
 import { FaShoppingCart } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
-
 const UserNavbar: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isUserInfoVisible, setIsUserInfoVisible] = useState(false);
